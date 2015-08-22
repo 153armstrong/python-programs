@@ -1,0 +1,39 @@
+import random
+
+while(True):
+    print("WELCOME TO THE GAME OF ROCK, PAPAER AND SCISSORS")
+    print("\n1.Rock\n2.Paper\n3.Scissors")
+    x=int( input("Enter your choice"))
+    
+    a= [1,2,3]
+
+    # 1 - Rock, 2- Paper, 3- Scissors
+
+    x1= random.choice(a)
+    if(x1==1):
+        print("\nComputer chooses Rock")
+    elif(x1==2):
+        print("\nComputer chooses Paper")
+    else:
+        print("\nComputer choose Scissors")
+
+    if( x==x1 ):
+        print("No decisive winner")
+        
+    elif((x1==1 and x==3) or (x1==2 and x==1) or (x1==3 and x==2)):
+        print("\n\n Winner : Computer")
+
+    else:
+        print("\n\n YAY! You Win!")
+
+    ch=int(input("press 1 for another game or 0 to exit"))
+    if(ch==0):
+        break
+    else:
+        print('\n\n')
+        del x1
+        
+
+    
+
+    
