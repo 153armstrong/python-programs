@@ -1,0 +1,43 @@
+class Game:
+    life=3 
+    def attack(self):
+        self.life-=1
+    
+    def defensive(self):
+        self.life-=0;
+
+    def lifes(self):
+        return( self.life ) 
+
+game1 = Game()
+print(" Instructions to play the game \n")
+print(" 1. Attack \n")
+print(" 2. Defensive \n")
+
+while True:
+    try:
+        x=int(input())
+        if(x==1):
+            game1.attack()
+            lives= game1.lifes()
+            if(lives <= 0 ):
+                print "Game Over"
+                break
+            else:
+                print( str(lives) + " Lives left" )
+            
+        elif(x==2):
+            game1.defensive()
+            lives= game1. lifes()
+            print( str(lives) + " Lives left" ) 
+        else:
+            print(" Only 1 and 2 are acceptable inputs " )
+
+    except NameError:
+        print(" Only 1 and 2 are acceptable inputs " )
+    except SyntaxError:
+        print(" Only 1 and 2 are acceptable inputs " )
+
+
+        
+
