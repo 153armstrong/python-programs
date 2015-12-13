@@ -1,0 +1,70 @@
+import os
+import platform
+text=""
+text= raw_input("enter word to be played back in morse code:")
+length= len(text)
+
+alphabets=["","10","0111","0101","011","1","1101","001","1111","11","1000","010","1011","00","01","000","1001","0010","101","111","0","110","1110","100","0110","0100","0011"]
+
+# added the first string as "" so that alphabets position remain unchanged i.e 1-26
+
+the_platform = platform.system()
+
+if( the_platform == 'Windows' ):
+	import winsound
+	for i in range(0,length):	
+		print text[i]
+		#ascii= ord(text[i])	#letter to ascii
+		#ascii= int(ascii) - 96  # so that alphabets lie in 1-26
+	
+		ascii= int(ord(text[i])) - 96
+		a= str(alphabets[ascii])
+		l= len(a)
+	
+		for j in range(0,l):
+			if( int(a[j]) == 1 ):
+				print "1"
+				winsound.Beep(1000,0.5)
+				winsound.Beep(1000,0.25)
+			elif( int(a[j]) == 0):
+				print "0"
+				winsound.Beep(1000,1)
+				winsound.Beep(1000,0.25)
+					
+	
+
+else:
+
+	for i in range(0,length):	
+		print text[i]
+		#ascii= ord(text[i])	#letter to ascii
+		#ascii= int(ascii) - 96  # so that alphabets lie in 1-26
+	
+		ascii= int(ord(text[i])) - 96
+		a= str(alphabets[ascii])
+		l= len(a)
+	
+		# 1- short note 
+		# 0 - long note 
+		# a- duration 
+		# b- frequency 
+		for j in range(0,l):
+			if( int(a[j]) == 1 ):
+				print "1"
+				os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( 0.5, 1000))
+				os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( 0.25, 0))
+			elif( int(a[j]) == 0):
+				print "0"
+				os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( 1, 1000))
+				os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( 0.25, 0))
+			
+
+			
+		
+		
+	
+	
+	
+	
+	
+	
