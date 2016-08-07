@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+from cv2 import *
+import sys,os
+
+class photo:
+	def takePhoto(self):
+		cam = VideoCapture(0)   # 0 is the default camera	
+		s, img = cam.read()
+		if s:
+		    imwrite("capture.jpg",img)
+		sys.exit(0)
+
+
+a = photo()
+a.takePhoto()
+
+# ### For linux systems, one can use the default stremer function 
+# os.system('streamer -f jpeg -o image.jpeg')
