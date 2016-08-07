@@ -1,0 +1,28 @@
+from bs4 import BeautifulSoup as bs
+import urllib,os
+
+class updateNews: 
+	def __init__(self):
+		# self.f = open('timesofindia.txt','wr')
+		# self.previousHeadline = self.f.readline()
+		self.headline= ""
+	def getNews(self):
+		url = 'http://timesofindia.indiatimes.com/'
+		r = urllib.urlopen(url)
+		soup = bs(r,'html.parser')
+		for link in soup.findAll('ul',{'class':'list9'}):   ### This is exclusive for the times of the india website.. Edit the class for other websites
+			self.headline = str(link.contents[1].text)  	### This is the most recent news
+			break
+
+	def notify(self):   ##  Using the command line to display the notifcation
+		z = 'notify-send "Latest News" \"' + self.headline + "\""
+		print z 
+		os.system(z)
+
+u = updateNews()
+u.getNews()
+u.notify()
+
+
+
+		
